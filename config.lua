@@ -1,11 +1,11 @@
 --lvim is the global options object
 
 --Vim makes a backup for the write operation, and then keeps the backup afterwards.
---It stores the backup in .local  
+--It stores the backup in .local
 -- vim.opt.writebackup = true -- vim only creates a backup during the write operation. this is overridden by backup option
 vim.opt.backup = true
-if(vim.fn.isdirectory(os.getenv('HOME') .. '/.local/share/nvim/backups/')) == 0 then
-  vim.cmd(':silent !mkdir -p '.. os.getenv('HOME') .. '/.local/share/nvim/backups/')
+if (vim.fn.isdirectory(os.getenv('HOME') .. '/.local/share/nvim/backups/')) == 0 then
+  vim.cmd(':silent !mkdir -p ' .. os.getenv('HOME') .. '/.local/share/nvim/backups/')
 end
 
 vim.opt.backupdir:remove('.')
@@ -13,6 +13,7 @@ vim.opt.backupdir:append(os.getenv("HOME") .. '/.local/share/nvim/backups/')
 vim.opt.backupext = '.bac'
 
 
+lvim.transparent_window = true
 
 vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
@@ -35,32 +36,32 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
 -- override a default keymapping
--- lvim.keys.normal_mode["<C-q>"] = ":q<cr>" -- or 
+-- lvim.keys.normal_mode["<C-q>"] = ":q<cr>" -- or
 
 -- 60% fa lyfe
-vim.keymap.set("n", "j", "<nop>" )
-vim.keymap.set("n", "h", "<nop>" )
-vim.keymap.set("n", "k", "<nop>" )
-vim.keymap.set("n", "l", "<nop>" )
-vim.keymap.set("v", "j", "<nop>" )
-vim.keymap.set("v", "h", "<nop>" )
-vim.keymap.set("v", "k", "<nop>" )
-vim.keymap.set("v", "l", "<nop>" )
+vim.keymap.set("n", "j", "<nop>")
+vim.keymap.set("n", "h", "<nop>")
+vim.keymap.set("n", "k", "<nop>")
+vim.keymap.set("n", "l", "<nop>")
+vim.keymap.set("v", "j", "<nop>")
+vim.keymap.set("v", "h", "<nop>")
+vim.keymap.set("v", "k", "<nop>")
+vim.keymap.set("v", "l", "<nop>")
 
 
 -- Additional Plugins
- lvim.plugins = {
-     {"folke/tokyonight.nvim"},
-     {
-       "folke/trouble.nvim",
-       cmd = "TroubleToggle",
-     },
-     {"hermitmaster/nvim-numbertoggle",
-        config= function()
-        require("nvim-numbertoggle").setup()
-      end
-     }
- }
+lvim.plugins = {
+  { "folke/tokyonight.nvim" },
+  {
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+  },
+  { "hermitmaster/nvim-numbertoggle",
+    config = function()
+      require("nvim-numbertoggle").setup()
+    end
+  }
+}
 
 
 -- TODO: User Config for predefined plugins
