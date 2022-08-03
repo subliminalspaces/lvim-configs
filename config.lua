@@ -19,7 +19,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "onedarker"
+lvim.colorscheme = "tokyonight"
 
 --Set the line wrapping rules
 vim.wo.wrap = true
@@ -59,6 +59,11 @@ lvim.plugins = {
   { "hermitmaster/nvim-numbertoggle",
     config = function()
       require("nvim-numbertoggle").setup()
+    end
+  },
+  { "nvim-orgmode/orgmode",
+    config = function()
+      require("orgmode").setup()
     end
   }
 }
