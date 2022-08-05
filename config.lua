@@ -61,9 +61,19 @@ lvim.plugins = {
       require("nvim-numbertoggle").setup()
     end
   },
+  { 'nvim-treesitter/nvim-treesitter' },
   { "nvim-orgmode/orgmode",
     config = function()
-      require("orgmode").setup()
+      require("orgmode").setup_ts_grammar()
+      require 'nvim-treesitter.configs'.setup {
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = { 'org' },
+        },
+        ensure_installed = { 'org' },
+      }
+
+      require('orgmode').setup()
     end
   }
 }
@@ -97,6 +107,12 @@ lvim.builtin.treesitter.ensure_installed = {
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
+
+local leaveGroup = vim.api.nvim_create_augroup("OnLeave", { clear = true })
+vim.api.nvim_create_autocmd("VimLeave", {
+  command = "set guicursor=a:ver90",
+  group = leaveGroup
+})
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
